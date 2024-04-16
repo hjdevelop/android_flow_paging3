@@ -9,22 +9,30 @@
 
     <EditText
         android:id="@+id/edt_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/edt_rounded_corner_rectangle"
         android:ems="10"
+        android:hint="@string/edt_search"
         android:inputType="text"
-        android:hint="검색어를 입력하세요"
+        android:paddingStart="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/btn_confirm"
         android:id="@+id/btn_search"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
-        android:text="검색"
+        android:text="@string/btn_search"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/edt_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edt_search" />
