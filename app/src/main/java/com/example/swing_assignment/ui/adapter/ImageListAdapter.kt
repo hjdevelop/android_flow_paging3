@@ -1,4 +1,4 @@
-package com.example.swing_assignment.ui
+package com.example.swing_assignment.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.swing_assignment.R
 import com.example.swing_assignment.data.model.BookmarkDataModel
-import com.example.swing_assignment.data.model.ImageDataModel
-import com.example.swing_assignment.data.model.RetrofitDataModel
 import com.example.swing_assignment.databinding.ImageItemBinding
 
 class ImageListAdapter (private val onBookmarkClick: (BookmarkDataModel) -> Unit) : ListAdapter<BookmarkDataModel, ImageListAdapter.ViewHolder>(

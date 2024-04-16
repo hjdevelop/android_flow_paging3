@@ -2,11 +2,10 @@ package com.example.swing_assignment.data.retrofit
 
 import com.example.swing_assignment.data.model.RetrofitDataModel
 import com.example.swing_assignment.data.retrofit.Constants.Companion.API_KEY
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface RetrofitInterface {
+interface RetrofitApi {
     @GET("/search/photos?client_id=${API_KEY}")
     suspend fun getSearchImage(
         @Query("query")

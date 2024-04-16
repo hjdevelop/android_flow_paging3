@@ -4,18 +4,19 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.swing_assignment.data.model.ImageDataModel
-import com.example.swing_assignment.data.model.RetrofitDataModel
-import com.example.swing_assignment.data.retrofit.RetrofitClient
-import com.example.swing_assignment.data.retrofit.RetrofitInterface
-import com.example.swing_assignment.domain.ImageRepository
-import com.example.swing_assignment.ui.ImagePagingSource
+import com.example.swing_assignment.data.retrofit.RetrofitApi
+import com.example.swing_assignment.domain.repository.ImageRepository
+import com.example.swing_assignment.data.paging.ImagePagingSource
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Response
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ImageRepositoryImpl(private val api : RetrofitInterface) : ImageRepository {
-    override suspend fun getSearchImageData(query: String): Flow<PagingData<ImageDataModel>> {
+@Singleton
+class ImageRepositoryImpl @Inject constructor(private val retrofitInstance : RetrofitApi) :
+    ImageRepository {
+    override fun getSearchImageData(query: String): Flow<PagingData<ImageDataModel>> {
         return  Pager(PagingConfig(30)) {
-            ImagePagingSource(api, query)
+            ImagePagingSource(retrofitInstance, query)
         }.flow
     }
 }

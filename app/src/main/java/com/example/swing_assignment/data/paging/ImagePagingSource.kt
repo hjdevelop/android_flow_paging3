@@ -1,14 +1,12 @@
-package com.example.swing_assignment.ui
+package com.example.swing_assignment.data.paging
 
-import android.graphics.Picture
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.swing_assignment.data.model.ImageDataModel
-import com.example.swing_assignment.data.model.RetrofitDataModel
-import com.example.swing_assignment.data.retrofit.RetrofitInterface
+import com.example.swing_assignment.data.retrofit.RetrofitApi
 import java.lang.Exception
 
-class ImagePagingSource(private val api : RetrofitInterface, private val query : String) : PagingSource<Int, ImageDataModel>() {
+class ImagePagingSource(private val api : RetrofitApi, private val query : String) : PagingSource<Int, ImageDataModel>() {
     companion object {
         private const val FIRST_PAGE_INDEX = 1
     }
