@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">swing_assignment</string>
+
+    <!-- feed_fragment.xml -->
+    <string name="edt_search">검색어를 입력하세요</string>
+    <string name="btn_search">검색</string>
 </resources>
