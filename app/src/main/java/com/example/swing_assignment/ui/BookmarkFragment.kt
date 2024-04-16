@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,11 +21,11 @@ class BookmarkFragment : Fragment() {
 
     private val listAdapter by lazy {
         ImageListAdapter(onBookmarkClick = {item ->
-            viewModel.deleteBookmark2(item)
+            sharedViewModel.deleteBookmarkForBookmark(item)
         })
     }
 
-    private val viewModel: ImageViewModel by viewModels {
+    private val sharedViewModel: ImageViewModel by activityViewModels {
         ImageViewModelFactory()
     }
 
@@ -49,16 +50,10 @@ class BookmarkFragment : Fragment() {
         rv.adapter = listAdapter
         rv.layoutManager = manager
 
-        val dummyList = mutableListOf<BookmarkDataModel>()
-        dummyList.add(BookmarkDataModel("asdsadsa", "https://images.unsplash.com/photo-1517849845537-4d257902454a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1OTAxNzF8MHwxfHNlYXJjaHwyfHxkb2d8ZW58MHx8fHwxNzEzMTkxMDMwfDA&ixlib=rb-4.0.3&q=80&w=1080"))
-        listAdapter.submitList(dummyList)
     }
 
-    private fun initViewModel() = with(viewModel) {
+    private fun initViewModel() = with(sharedViewModel) {
         bookmarkList.observe(viewLifecycleOwner, Observer {
-            for (i in it) {
-                Log.d("bookmark", i.toString())
-            }
             listAdapter.submitList(it)
         })
     }

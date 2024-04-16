@@ -37,14 +37,13 @@ class ImagePagingDataAdapter(private val onBookmarkClick: (ImageDataModel) -> Un
         fun bind(item: ImageDataModel, onBookmarkClick: (ImageDataModel) -> Unit) = with(binding) {
             ivImage.load(item.result.urls.regular)
 
+            if (item.isLiked) btnLike.load(R.drawable.ic_heart_filled)
+            else btnLike.load(R.drawable.ic_heart)
+
             btnLike.setOnClickListener {
-                if (item.isLiked) {
-                    btnLike.load(R.drawable.ic_heart)
-                }
-                else {
-                    btnLike.load(R.drawable.ic_heart_filled)
-                }
-                onBookmarkClick(item)
+                if (item.isLiked) btnLike.load(R.drawable.ic_heart)
+                else btnLike.load(R.drawable.ic_heart_filled)
+                onBookmarkClick (item)
             }
         }
     }

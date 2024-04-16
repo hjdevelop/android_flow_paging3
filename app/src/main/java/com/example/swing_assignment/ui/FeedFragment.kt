@@ -1,11 +1,13 @@
 package com.example.swing_assignment.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
@@ -22,7 +24,7 @@ class FeedFragment : Fragment() {
     private var _binding: FeedFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ImageViewModel by viewModels {
+    private val sharedViewModel : ImageViewModel by activityViewModels {
         ImageViewModelFactory()
     }
 
@@ -30,13 +32,12 @@ class FeedFragment : Fragment() {
         ImagePagingDataAdapter(
             onBookmarkClick = {item ->
                 if (item.isLiked) {
-                    viewModel.deleteBookmark(item)
+                    sharedViewModel.deleteBookmarkForFeed(item)
 
                 }
                 else {
-                    viewModel.addBookmark(item)
+                    sharedViewModel.addBookmark(item)
                 }
-                item.isLiked = !item.isLiked
             }
         )
     }
@@ -63,11 +64,11 @@ class FeedFragment : Fragment() {
         rv.layoutManager = manager
 
         btnSearch.setOnClickListener {
-            viewModel.getImageList(edtSearch.text.toString())
+            sharedViewModel.getImageList(edtSearch.text.toString())
         }
     }
 
-    private fun initViewModel() = with(viewModel) {
+    private fun initViewModel() = with(sharedViewModel) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
@@ -77,6 +78,17 @@ class FeedFragment : Fragment() {
                 }
             }
         }
+        bookmarkList.observe(viewLifecycleOwner, Observer {
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    launch {
+                        imageList.collectLatest { image ->
+                            pagingDataAdapter.submitData(image)
+                        }
+                    }
+                }
+            }
+        })
     }
 
     override fun onDestroyView() {

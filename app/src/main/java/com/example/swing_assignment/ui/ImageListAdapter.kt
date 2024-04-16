@@ -15,7 +15,7 @@ import com.example.swing_assignment.databinding.ImageItemBinding
 class ImageListAdapter (private val onBookmarkClick: (BookmarkDataModel) -> Unit) : ListAdapter<BookmarkDataModel, ImageListAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<BookmarkDataModel>() {
         override fun areItemsTheSame(oldItem: BookmarkDataModel, newItem: BookmarkDataModel): Boolean {
-            return oldItem == newItem
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: BookmarkDataModel, newItem: BookmarkDataModel): Boolean {
@@ -47,7 +47,7 @@ class ImageListAdapter (private val onBookmarkClick: (BookmarkDataModel) -> Unit
             btnLike.load(R.drawable.ic_heart_filled)
 
             btnLike.setOnClickListener {
-                onBookmarkClick
+                onBookmarkClick(item)
             }
         }
     }
