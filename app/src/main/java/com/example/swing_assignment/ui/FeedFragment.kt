@@ -75,17 +75,6 @@ class FeedFragment : Fragment() {
                 }
             }
         }
-        bookmarkList.observe(viewLifecycleOwner, Observer {
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    launch {
-                        imageList.collectLatest { image ->
-                            pagingDataAdapter.submitData(image)
-                        }
-                    }
-                }
-            }
-        })
     }
 
     override fun onDestroyView() {
