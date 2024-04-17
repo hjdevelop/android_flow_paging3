@@ -5,6 +5,7 @@ import com.example.swing_assignment.data.retrofit.Constants.Companion.API_KEY
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+//사진 검색을 위한 인터페이스 입니다.
 interface RetrofitApi {
     @GET("/search/photos?client_id=${API_KEY}")
     suspend fun getSearchImage(

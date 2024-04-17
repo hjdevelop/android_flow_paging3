@@ -2,6 +2,7 @@ package com.example.swing_assignment.data.model
 
 import com.google.gson.annotations.SerializedName
 
+//네트워크 통신으로 받아올 데이터를 위한 데이터 클래스 입니다.
 data class RetrofitDataModel (
     val results: List<Result>,
     val total: Int,

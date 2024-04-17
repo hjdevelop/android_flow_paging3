@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+//의존성 주입을 위해 모듈화 했습니다.
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {

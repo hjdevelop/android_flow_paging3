@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+//ImageRepository의 구현부 입니다.
 @Singleton
 class ImageRepositoryImpl @Inject constructor(private val retrofitInstance : RetrofitApi) : ImageRepository {
     override fun getSearchImageData(query: String): Flow<PagingData<ImageDataModel>> {

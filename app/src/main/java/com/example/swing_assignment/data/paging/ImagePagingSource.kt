@@ -5,6 +5,7 @@ import androidx.paging.PagingState
 import com.example.swing_assignment.data.model.ImageDataModel
 import com.example.swing_assignment.data.retrofit.RetrofitApi
 
+//데이터를 받아오고 로드하는 방법을 정의하기 위한 PagingSource 입니다.
 class ImagePagingSource(private val api : RetrofitApi, private val query : String) : PagingSource<Int, ImageDataModel>() {
     companion object {
         private const val FIRST_PAGE_INDEX = 1

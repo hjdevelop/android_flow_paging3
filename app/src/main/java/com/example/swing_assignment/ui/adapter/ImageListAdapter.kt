@@ -10,6 +10,7 @@ import com.example.swing_assignment.R
 import com.example.swing_assignment.data.model.BookmarkDataModel
 import com.example.swing_assignment.databinding.ImageItemBinding
 
+//북마크 RecyclerView와 데이터를 연결하고 관리하기 위한 ListAdpater 입니다.
 class ImageListAdapter (private val onBookmarkClick: (BookmarkDataModel) -> Unit) : ListAdapter<BookmarkDataModel, ImageListAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<BookmarkDataModel>() {
         override fun areItemsTheSame(oldItem: BookmarkDataModel, newItem: BookmarkDataModel): Boolean {

@@ -13,6 +13,7 @@ import com.example.swing_assignment.ui.adapter.ImageListAdapter
 import com.example.swing_assignment.ui.viewmodel.ImageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+//북마크 리스트를 출력하기 위한 Fragment 입니다.
 @AndroidEntryPoint
 class BookmarkFragment : Fragment() {
     private var _binding: BookmarkFragmentBinding? = null

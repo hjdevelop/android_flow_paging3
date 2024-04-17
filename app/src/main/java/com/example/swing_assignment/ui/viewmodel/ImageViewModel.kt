@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+//View와 Model의 중간 매개체를 담당하는 ViewModel 입니다.
 @HiltViewModel
 class ImageViewModel @Inject constructor(private val searchImageDataUseCase: SearchImageDataUseCase) : ViewModel() {
     private val _imageList = MutableStateFlow<PagingData<ImageDataModel>>(PagingData.empty())

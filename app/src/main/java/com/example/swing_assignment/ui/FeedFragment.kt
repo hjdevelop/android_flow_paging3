@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+//검색 리스트를 출력하기 위한 Fragment 입니다.
 @AndroidEntryPoint
 class FeedFragment : Fragment() {
     private var _binding: FeedFragmentBinding? = null

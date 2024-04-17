@@ -10,6 +10,7 @@ import com.example.swing_assignment.R
 import com.example.swing_assignment.data.model.ImageDataModel
 import com.example.swing_assignment.databinding.ImageItemBinding
 
+//피드 RecyclerView와 Paging되는 데이터를 연결하고 관리하기 위한 PagingDataAdapter 입니다.
 class ImagePagingDataAdapter(private val onBookmarkClick: (ImageDataModel) -> Unit) : PagingDataAdapter<ImageDataModel, ImagePagingDataAdapter.ImageViewHolder>(object : DiffUtil.ItemCallback<ImageDataModel>() {
     override fun areItemsTheSame(oldItem: ImageDataModel, newItem: ImageDataModel): Boolean {
         return oldItem.result.id == newItem.result.id
